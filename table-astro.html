@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Liste des étoiles</title>
+        <script src="lib/astronomie.js"></script>
+        <script src="array-utils.js"></script>
+        <script src="lib/livres.js"></script>
+        <script src="string-utils.js"></script>
+    </head>
+    <body>
+
+        <div id="cible"></div>
+
+        <div id="cible2"></div>
+
+        <script>
+            document.getElementById("cible2").innerHTML = obtenirTableHtml(books);
+            document.getElementById("cible").innerHTML = obtenirTableHtml(data);
+
+            console.log (crypter("patrice"));
+        </script>
+    </body>
+</html>

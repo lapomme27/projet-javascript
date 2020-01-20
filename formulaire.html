@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <title>Formulaire</title>
+        <style>
+        #overlay{
+            position:absolute;
+            left:0;
+            top:0;
+            width:100%;
+            height:100%;
+            background-color: rgba(0,0,0, 0.3);
+        }
+
+        .hidden{
+            display: none;
+        }
+
+        #conteneurFormulaire{
+            position:relative;
+            margin:50px auto;
+            width:30%;
+            z-index:1;
+            padding:15px;
+            box-shadow: 5px 5px 3px black;
+            border-radius: 15px;
+            border: 1px solid white;
+            background-color: rgb(215, 230, 250);
+        }
+        </style>
+    </head>
+    <body>
+        <button id="btAfficherFormulaire" class="btn btn-primary">Afficher le formulaire</button>
+
+        <div id="conteneurFormulaire" class="hidden">
+            <form method ="post">
+                <div class="form-group">
+                    <label for="inputAddress">Nom</label>
+                    <input type="text" class="form-control" id="inputNom" placeholder="ici">
+                </div>
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </form>
+        </div>
+
+        <div id="overlay" class="hidden"></div>
+
+        <script>
+            //ciblage du formulaire
+            var form = document.querySelector("form");
+
+            //ciblage du champ "nom"
+            var inputNom = document.getElementById("inputNom");
+
+            //ciblage de l'overlay
+            var overlay = document.getElementById("overlay");
+
+            //ciblage du conteneur de formulaire
+            var conteneurForm = document.getElementById("conteneurFormulaire");
+
+            //ciblage du bouton pour afficher le formulaire
+            var btAffiche = document.getElementById("btAfficherFormulaire");
+
+            //affichage du formulaire au clic sur le bouton
+            btAffiche.onclick = function (even){
+                even.stopPropagation();
+                overlay.classList.remove("hidden");
+                conteneurForm.classList.remove("hidden");
+            }
+
+            //Masquage du formulaire au clic sur le bouton
+            document.querySelector("body").onclick = function (){
+                overlay.classList.add("hidden");
+                conteneurForm.classList.add("hidden");
+            }
+
+            conteneurForm.onclick = function(even){
+                even.stopPropagation();
+            }
+
+            //évènement submit
+            form.onsubmit = function(){
+                //on considère que la saisie est valide à priori
+                valid = true;
+
+                //récupération de la saisie
+                nomSaisi = inputNom.value;
+                
+                if(nomSaisi.trim() == ""){
+                    valid = false;
+                }
+                else if(nomSaisi.length < 3 || nomSaisi.length > 12){
+                    valid = false;
+                }
+
+                if(! valid){
+                    inputNom.style.border="2px solid red";
+                }
+                else{
+                    inputNom.style.border="2px solid green";
+                }
+
+                return false;//valid
+            }
+        </script>
+    </body>
+</html>

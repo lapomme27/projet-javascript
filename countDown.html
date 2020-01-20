@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Compte à rebours</title>
+</head>
+<body>
+    <div id="countDown"></div>
+    
+    <script>
+        var start = 10;
+        var end = 0;
+        var current = start;
+
+        var countDown = document.getElementById("countDown");
+
+        countDown.textContent = current;
+
+        var countInterval = setInterval(
+            function(){
+                current--;
+                countDown.textContent = current;
+                if(current == 0){
+                    clearInterval(countInterval);
+                }
+            },
+            500
+        )
+    </script>
+</body>
+</html>

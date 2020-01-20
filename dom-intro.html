@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <ul id="listefruits"></ul>
+
+    <script>
+        var liste = document.getElementById("listefruits");
+        var fruits = ["pommes", "poires", "oranges", "bananes"];
+        var contenu = "";
+
+        for (var item of fruits) {
+            contenu += "<li>" + item + "</li>";
+        }
+        liste.innerHTML = contenu;
+
+
+                    //-----------------function suppression des doublons dans un tableau-------
+        function deduplication(sourceArray) {
+            var item, posFound;
+            var newArray = [];
+
+            for (let index in sourceArray) {
+                item = sourceArray[index];
+                posFound = sourceArray.indexOf(item);
+
+                if (posFound == index) {
+                    newArray.push(item);
+                }
+            }
+            return newArray;
+        }
+
+        for (var item of deduplication(sourceArray)) {
+            contenu += "<li>" + item + "</li>";
+        }
+
+    </script>
+
+</body>
+
+</html>
