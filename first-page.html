@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Prmeier script JS</title>
+</head>
+<body>
+    
+    <script>
+        var name=prompt("votre nom");
+        var age=prompt("votre âge");
+        var message="Bonjour " + name;
+        var validA=true;
+        var validB=true;
+
+        while(name=="null" || name==""){
+            name=prompt("votre nom");
+            validA=false;
+        }
+        
+        age=parseInt(age); //---conversion d'une chaine de caractères en nombre
+
+        while(age=="null" || age==""){
+            age=prompt("votre âge");
+            validB=false;
+        }
+
+        if(validA && validB){
+            alert ("Dans un an, vous aurez "+ (age+1) +"ans"); 
+
+            if(age >= 18){
+                message += ", vous êtes majeur";
+            }
+            else message += ", vous êtes mineur";
+            
+            alert(message);
+        }
+    </script>
+
+</body>
+</html>
